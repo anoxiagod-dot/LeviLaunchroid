@@ -27,7 +27,7 @@ jobs:
                 -Bbuild -S. && cmake --build build
 
       - name: Upload SO
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: freecam-so
           path: app/src/main/cpp/build/**/*.so
