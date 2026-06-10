@@ -86,6 +86,10 @@ public class InbuiltModManager {
         mods.add(new InbuiltMod(ModIds.VIRTUAL_CURSOR,
             context.getString(R.string.inbuilt_mod_virtual_cursor),
             context.getString(R.string.inbuilt_mod_virtual_cursor_desc), false, addedMods.contains(ModIds.VIRTUAL_CURSOR)));
+
+mods.add(new InbuiltMod(ModIds.FREECAM,
+            "FreeCam",
+            "Free camera for screenshots", false, addedMods.contains(ModIds.FREECAM)));
         return mods;
     }
 
