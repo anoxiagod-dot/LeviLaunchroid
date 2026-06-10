@@ -64,6 +64,8 @@ public class InbuiltOverlayManager {
         modActiveStates.put(ModIds.SNAPLOOK, false);
         modActiveStates.put(ModIds.VIRTUAL_CURSOR, false);
 
+modActiveStates.put(ModIds.FREECAM, false);
+
         modPositionMap.put(ModIds.QUICK_DROP, nextY + SPACING);
         modPositionMap.put(ModIds.CAMERA_PERSPECTIVE, nextY + SPACING * 2);
         modPositionMap.put(ModIds.TOGGLE_HUD, nextY + SPACING * 3);
@@ -73,6 +75,8 @@ public class InbuiltOverlayManager {
         modPositionMap.put(ModIds.CPS_DISPLAY, nextY + SPACING * 7);
         modPositionMap.put(ModIds.SNAPLOOK, nextY + SPACING * 8);
         modPositionMap.put(ModIds.VIRTUAL_CURSOR, nextY + SPACING * 9);
+
+modPositionMap.put(ModIds.FREECAM, nextY + SPACING * 10);
 
         if (zoomOverlay == null) {
             zoomOverlay = new ZoomOverlay(activity);
@@ -175,6 +179,12 @@ public class InbuiltOverlayManager {
                 cursorOverlay.show(savedX, savedY);
                 overlays.add(cursorOverlay);
                 modOverlayMap.put(modId, cursorOverlay);
+                break;
+case ModIds.FREECAM:
+                FreeCamOverlay freeCamOverlay = new FreeCamOverlay(activity);
+                freeCamOverlay.show(savedX, savedY);
+                overlays.add(freeCamOverlay);
+                modOverlayMap.put(modId, freeCamOverlay);
                 break;
         }
     }
@@ -325,6 +335,14 @@ public class InbuiltOverlayManager {
             nextY += SPACING;
         }
         return nextY;
+if (manager.isModAdded(ModIds.FREECAM)) {
+            int x = manager.getOverlayPositionX(ModIds.FREECAM, START_X);
+            int y = manager.getOverlayPositionY(ModIds.FREECAM, nextY);
+            FreeCamOverlay freeCamOverlay = new FreeCamOverlay(activity);
+            freeCamOverlay.show(x, y);
+            overlays.add(freeCamOverlay);
+            nextY += SPACING;
+        }
     }
 
 
